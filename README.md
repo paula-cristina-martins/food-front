@@ -2,7 +2,7 @@
 
 Bem-vindo ao repositório do Food Explorer, um menu interativo para um restaurante fictício desenvolvido com as tecnologias Vite + React e JavaScript.
 
-- #### Deploy → Netlify | Disponível em: [food-front](/)
+- #### Deploy → [Netlify](https://www.netlify.com/) | Disponível em: [food-front](/)
 
 ## 🚀 Começando
 
