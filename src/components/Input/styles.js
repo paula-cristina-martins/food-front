@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
 	display: block;
@@ -15,7 +16,7 @@ export const Container = styled.div`
 		padding: 0.8rem;
 		margin-top: 0.3rem;
 
-		background: transparent;
+		background: ${({ theme }) => theme.COLORS.DARK_200};
 		color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
 		border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100};
@@ -23,6 +24,10 @@ export const Container = styled.div`
 
 		&::placeholder {
 			color: ${({ theme }) => theme.COLORS.LIGHT_500};
+		}
+
+		@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+			border: 0;
 		}
 	}
 `;
