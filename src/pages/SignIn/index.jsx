@@ -22,7 +22,7 @@ export function SignIn() {
 
 	return (
 		<Container>
-			<BrandImage size={2.6} />
+			<BrandImage size={2} />
 			<Form>
 				<h1>Faça login</h1>
 
@@ -32,6 +32,7 @@ export function SignIn() {
 					placeholder={"exemplo@exemplo.com.br"}
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
+					autoComplete="email"
 				/>
 
 				<Input
@@ -40,6 +41,7 @@ export function SignIn() {
 					placeholder={"- - - - - - -"}
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
+					autoComplete="current-password"
 				/>
 
 				<Button name={"Entrar"} onClick={handleSignIn} />

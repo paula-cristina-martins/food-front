@@ -38,7 +38,7 @@ export function SignUp() {
 
 	return (
 		<Container>
-			<BrandImage size={2.6} />
+			<BrandImage size={2} />
 			<Form>
 				<h1>Crie a sua conta</h1>
 
@@ -48,14 +48,16 @@ export function SignUp() {
 					placeholder={"Exemplo: Maria da Silva"}
 					value={name}
 					onChange={(e) => setName(e.target.value)}
+					autoComplete="name"
 				/>
 
 				<Input
 					title={"Email"}
 					type={"text"}
-					placeholder={"Exemplo: exemplo@exemplo.com.br"}
+					placeholder={"exemplo@exemplo.com.br"}
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
+					autoComplete="email"
 				/>
 
 				<Input
@@ -64,6 +66,7 @@ export function SignUp() {
 					placeholder={"No mínimo 6 caracteres"}
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
+					autoComplete="current-password"
 				/>
 
 				<Button name={"Criar Conta"} onClick={handleSignUp} />
