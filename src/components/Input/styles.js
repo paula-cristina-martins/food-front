@@ -4,6 +4,7 @@ import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 export const Container = styled.div`
 	display: block;
 	align-items: center;
+	width: 100%;
 
 	> label {
 		font-family: "Roboto", sans-serif;
