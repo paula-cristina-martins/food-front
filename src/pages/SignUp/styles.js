@@ -21,13 +21,15 @@ export const Container = styled.div`
 
 export const Form = styled.form`
 	display: grid;
-	width: 100%;
-
+	max-width: 30rem;
 	padding: 4rem;
+
 	background-color: ${({ theme }) => theme.COLORS.DARK_400};
 	border-radius: 0.3rem;
-	max-width: 30rem;
-	width: 100%;
+
+	> button {
+		width: 100%;
+	}
 
 	> *:not(:last-child) {
 		margin-bottom: 2rem;
