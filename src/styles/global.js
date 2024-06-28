@@ -48,10 +48,11 @@ export default createGlobalStyle`
   }
   
   ::-webkit-scrollbar-track {
-    background-color: #202024;
+    background-color: #192227;
   }
   
   ::-webkit-scrollbar-thumb {
-    background-color: #09090A;
+    background-color: #4D585E;
+    border-radius: 0.25rem; 
   }
 `;
