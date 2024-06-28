@@ -1,48 +1,89 @@
 import { FiLogOut, FiSearch } from "react-icons/fi";
 import { PiReceipt } from "react-icons/pi";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 import { useAuth } from "../../hooks/auth";
 
-import { Container, Search, SignOutButton, User } from "./styles";
+import {
+	Badge,
+	Container,
+	MenuMobile,
+	Orders,
+	Options,
+	SignOutButton,
+	User,
+	OptionsMobile,
+	Search,
+	OptionButton,
+} from "./styles";
 import { BrandImage } from "../BrandImage";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { USER_ROLE } from "../../utils/roles";
+import { ConsultFoods } from "../ConsultFoods";
 
 export function Header() {
 	const { user, signOut } = useAuth();
 	const [description, setDescription] = useState("");
 
+	function checkRoleUser() {
+		return user?.role === USER_ROLE.ADMIN;
+	}
+
+	const [menuIsOpen, setMenuIsOpen] = useState(false);
+
 	return (
-		<Container>
-			<User>
-				<BrandImage />
-				{user?.role == USER_ROLE.ADMIN && <span>{user?.role}</span>}
-			</User>
+		<Fragment>
+			{!menuIsOpen ? (
+				<Container>
+					<MenuMobile onClick={() => setMenuIsOpen(true)}>
+						<FaBars size={20} />
+					</MenuMobile>
 
-			<Search>
-				<span className="input-container">
-					<FiSearch size={20} className="search-icon" />
-					<input
-						type={"text"}
-						value={description}
-						onChange={(e) => setDescription(e.target.value)}
-						placeholder={"Busque por pratos ou ingredientes"}
-						autoComplete={"description"}
-					/>
-				</span>
-			</Search>
+					<User>
+						<BrandImage />
+						{checkRoleUser() && <span>{user?.role}</span>}
+					</User>
 
-			{user?.role == USER_ROLE.ADMIN ? (
-				<Button name={"Novo prato"} />
+					<Search>
+						<ConsultFoods description={description} setDescription={setDescription} />
+					</Search>
+
+					<Options>
+						{checkRoleUser() ? <Button name={"Novo prato"} /> : <Button icon={PiReceipt} name={"Pedidos (0)"} />}
+					</Options>
+
+					{!checkRoleUser() && (
+						<Orders>
+							<div>
+								<PiReceipt size={24} />
+							</div>
+							<Badge>0</Badge>
+						</Orders>
+					)}
+
+					<SignOutButton type="button" onClick={signOut}>
+						<FiLogOut size={24} />
+					</SignOutButton>
+				</Container>
 			) : (
-				<Button icon={PiReceipt} name={"Pedidos (0)"} />
+				<Fragment>
+					<Container>
+						<MenuMobile onClick={() => setMenuIsOpen(false)}>
+							<FaTimes size={20} />
+							<p>Menu</p>
+						</MenuMobile>
+					</Container>
+					<OptionsMobile>
+						<ConsultFoods description={description} setDescription={setDescription} />
+						<OptionButton>
+							<button>Novo prato</button>
+							<button onClick={() => signOut()}>Sair</button>
+						</OptionButton>
+					</OptionsMobile>
+				</Fragment>
 			)}
-
-			<SignOutButton type="button" onClick={signOut}>
-				<FiLogOut size={24} />
-			</SignOutButton>
-		</Container>
+		</Fragment>
 	);
 }
