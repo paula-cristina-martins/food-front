@@ -21,7 +21,7 @@ import { Button } from "../Button";
 import { Input } from "../Input";
 import { Fragment, useState } from "react";
 import { USER_ROLE } from "../../utils/roles";
-import { ConsultFoods } from "../ConsultFoods";
+import { ConsultFoods } from "../Foods/Consult";
 
 export function Header() {
 	const { user, signOut } = useAuth();

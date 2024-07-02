@@ -1,5 +1,5 @@
 import { FiSearch } from "react-icons/fi";
-import { BrandImage } from "../BrandImage";
+import { BrandImage } from "../../BrandImage";
 import { Container } from "./styles";
 
 export function ConsultFoods({ description, setDescription }) {
