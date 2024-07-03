@@ -22,10 +22,11 @@ import { Input } from "../Input";
 import { Fragment, useState } from "react";
 import { USER_ROLE } from "../../utils/roles";
 import { ConsultFoods } from "../Foods/Consult";
+import { useConsultFood } from "../../hooks/consultFood";
 
 export function Header() {
 	const { user, signOut } = useAuth();
-	const [description, setDescription] = useState("");
+	const { search, setSearch } = useConsultFood();
 
 	function checkRoleUser() {
 		return user?.role === USER_ROLE.ADMIN;
@@ -47,7 +48,7 @@ export function Header() {
 					</User>
 
 					<Search>
-						<ConsultFoods description={description} setDescription={setDescription} />
+						<ConsultFoods description={search} setDescription={setSearch} />
 					</Search>
 
 					<Options>
@@ -76,7 +77,7 @@ export function Header() {
 						</MenuMobile>
 					</Container>
 					<OptionsMobile>
-						<ConsultFoods description={description} setDescription={setDescription} />
+						<ConsultFoods description={search} setDescription={setSearch} />
 						<OptionButton>
 							<button>Novo prato</button>
 							<button onClick={() => signOut()}>Sair</button>
