@@ -3,8 +3,10 @@ import { createContext, useContext, useState, useEffect } from "react";
 const ConsultFoodContext = createContext({});
 
 import { api } from "../services/api";
+import { useAuth } from "./auth";
 
 function ConsultFoodProvider({ children }) {
+	const { user } = useAuth();
 	const [search, setSearch] = useState("");
 	const [foodsByCategory, setFoodsByCategory] = useState({});
 
@@ -25,7 +27,7 @@ function ConsultFoodProvider({ children }) {
 	}
 
 	useEffect(() => {
-		searchFoodsByCategory();
+		if (user != undefined) searchFoodsByCategory();
 	}, [search]);
 
 	return (

@@ -20,17 +20,13 @@ import { BrandImage } from "../BrandImage";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { Fragment, useState } from "react";
-import { USER_ROLE } from "../../utils/roles";
+import { CheckRoleUser, USER_ROLE } from "../../utils/roles";
 import { ConsultFoods } from "../Foods/Consult";
 import { useConsultFood } from "../../hooks/consultFood";
 
 export function Header() {
 	const { user, signOut } = useAuth();
 	const { search, setSearch } = useConsultFood();
-
-	function checkRoleUser() {
-		return user?.role === USER_ROLE.ADMIN;
-	}
 
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
 
@@ -44,7 +40,7 @@ export function Header() {
 
 					<User>
 						<BrandImage />
-						{checkRoleUser() && <span>{user?.role}</span>}
+						{CheckRoleUser(user) && <span>{user?.role}</span>}
 					</User>
 
 					<Search>
@@ -52,10 +48,10 @@ export function Header() {
 					</Search>
 
 					<Options>
-						{checkRoleUser() ? <Button name={"Novo prato"} /> : <Button icon={PiReceipt} name={"Pedidos (0)"} />}
+						{CheckRoleUser(user) ? <Button name={"Novo prato"} /> : <Button icon={PiReceipt} name={"Pedidos (0)"} />}
 					</Options>
 
-					{!checkRoleUser() && (
+					{!CheckRoleUser(user) && (
 						<Orders>
 							<div>
 								<PiReceipt size={24} />

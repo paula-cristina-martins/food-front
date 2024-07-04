@@ -1,8 +1,13 @@
-import { PiHeart, PiHeartFill } from "react-icons/pi";
+import { PiHeart, PiHeartFill, PiPencilSimple } from "react-icons/pi";
 import { Container } from "./styles";
 import { api } from "../../../services/api";
+import { Fragment } from "react/jsx-runtime";
+import { useAuth } from "../../../hooks/auth";
+import { CheckRoleUser } from "../../../utils/roles";
 
 export default function FavoriteFoods({ food }) {
+	const { user } = useAuth();
+
 	async function insertFavoriteFood(id) {
 		try {
 			const response = await api.post("foods/favorites", { food: id }, { withCredentials: true });
@@ -32,12 +37,20 @@ export default function FavoriteFoods({ food }) {
 	}
 
 	return (
-		<Container
-			onClick={() =>
-				food.favorite.status == true ? deleteFavoriteFood(food.favorite.id) : insertFavoriteFood(food.id)
-			}
-		>
-			{food.favorite.status == true ? <PiHeartFill /> : <PiHeart />}
-		</Container>
+		<Fragment>
+			{!CheckRoleUser(user) ? (
+				<Container
+					onClick={() =>
+						food.favorite.status == true ? deleteFavoriteFood(food.favorite.id) : insertFavoriteFood(food.id)
+					}
+				>
+					{food.favorite.status == true ? <PiHeartFill /> : <PiHeart />}
+				</Container>
+			) : (
+				<Container>
+					<PiPencilSimple />
+				</Container>
+			)}
+		</Fragment>
 	);
 }
