@@ -9,6 +9,7 @@ import theme from "./styles/theme";
 import GlobalStyles from "./styles/global";
 
 import { Routes } from "./routes";
+import { OrdersProvider } from "./hooks/orders";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			<GlobalStyles />
 			<AuthProvider>
 				<ConsultFoodProvider>
-					<Routes />
+					<OrdersProvider>
+						<Routes />
+					</OrdersProvider>
 				</ConsultFoodProvider>
 			</AuthProvider>
 		</ThemeProvider>

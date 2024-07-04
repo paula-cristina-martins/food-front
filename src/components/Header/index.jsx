@@ -19,16 +19,22 @@ import {
 import { BrandImage } from "../BrandImage";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { CheckRoleUser, USER_ROLE } from "../../utils/roles";
 import { ConsultFoods } from "../Foods/Consult";
 import { useConsultFood } from "../../hooks/consultFood";
+import { useOrders } from "../../hooks/orders";
 
 export function Header() {
 	const { user, signOut } = useAuth();
+	const { orderQuantity, searchOrdersAwaitingPayment } = useOrders();
 	const { search, setSearch } = useConsultFood();
 
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+	useEffect(() => {
+		searchOrdersAwaitingPayment();
+	}, []);
 
 	return (
 		<Fragment>
@@ -48,7 +54,11 @@ export function Header() {
 					</Search>
 
 					<Options>
-						{CheckRoleUser(user) ? <Button name={"Novo prato"} /> : <Button icon={PiReceipt} name={"Pedidos (0)"} />}
+						{CheckRoleUser(user) ? (
+							<Button name={"Novo prato"} />
+						) : (
+							<Button icon={PiReceipt} name={`Pedidos (${orderQuantity ?? 0})`} />
+						)}
 					</Options>
 
 					{!CheckRoleUser(user) && (
@@ -56,7 +66,7 @@ export function Header() {
 							<div>
 								<PiReceipt size={24} />
 							</div>
-							<Badge>0</Badge>
+							<Badge>{orderQuantity ?? 0}</Badge>
 						</Orders>
 					)}
 
