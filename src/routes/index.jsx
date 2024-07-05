@@ -31,5 +31,5 @@ export function Routes() {
 		}
 	}
 
-	return <BrowserRouter>{user ? <AccessRoute /> : <AuthRoutes />}</BrowserRouter>;
+	return <BrowserRouter>{user != undefined ? <AccessRoute /> : <AuthRoutes />}</BrowserRouter>;
 }
