@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "../../../Button";
 import { useOrders } from "../../../../hooks/orders";
 
-export default function MakeOrderItem({ foodId, foodPrice }) {
+export default function MakeOrderItem({ foodId, foodPrice, showPrice }) {
 	const { createOrder } = useOrders();
 
 	const [quantity, setQuantity] = useState(1);
@@ -17,7 +17,7 @@ export default function MakeOrderItem({ foodId, foodPrice }) {
 				<PiPlus onClick={() => setQuantity(quantity + 1)} />
 			</FoodQuantity>
 			<Button
-				name={"incluir"}
+				name={`incluir ${showPrice ? `- R$ ${foodPrice?.toLocaleString("pr-br")}` : ""}`}
 				icon={""}
 				onClick={() => {
 					createOrder(quantity, foodPrice, foodId);

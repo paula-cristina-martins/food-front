@@ -5,13 +5,12 @@ export const Container = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
 
-	gap: 0.8rem;
+	gap: 1rem;
 
 	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
 		display: block;
-		padding: 0 1rem;
+
 		button {
 			width: 100%;
 		}
