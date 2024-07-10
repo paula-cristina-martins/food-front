@@ -97,11 +97,12 @@ export const FoodTitle = styled.div`
 	justify-content: center;
 	align-items: center;
 	gap: 0.4rem;
+	padding-top: 1.5rem;
 
 	font-size: 1.5rem;
 	font-weight: 400;
 
-	cursor: pointer;
+	color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
 	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
 		font-size: 1.2rem;

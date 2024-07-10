@@ -85,7 +85,7 @@ export function Header() {
 					<OptionsMobile>
 						<ConsultFoods description={search} setDescription={setSearch} />
 						<OptionButton>
-							<button>Novo prato</button>
+							{CheckRoleUser(user) && <button>Novo prato</button>}
 							<button onClick={() => signOut()}>Sair</button>
 						</OptionButton>
 					</OptionsMobile>

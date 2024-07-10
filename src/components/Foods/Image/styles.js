@@ -14,6 +14,7 @@ export const Container = styled.div`
 
 	svg {
 		font-size: 12rem;
+		color: ${({ theme }) => theme.COLORS.LIGHT_100};
 	}
 
 	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
