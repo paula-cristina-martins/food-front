@@ -18,6 +18,7 @@ import MakeOrderItem from "../Order/MakeOrderItem";
 import ImageFoods from "../Image";
 import { useAuth } from "../../../hooks/auth";
 import { CheckRoleUser } from "../../../utils/roles";
+import { Link } from "react-router-dom";
 
 export function CategoryFoods({ title, category }) {
 	const { user } = useAuth();
@@ -68,11 +69,13 @@ export function CategoryFoods({ title, category }) {
 							{category?.map((food) => (
 								<CarouselItem key={food.id}>
 									<FavoriteFoods food={food} />
-									<ImageFoods food={food} />
-									<FoodTitle>
-										<p>{food.name}</p>
-										<MdOutlineKeyboardArrowRight />
-									</FoodTitle>
+									<Link to={`/show-food/${food.id}`}>
+										<ImageFoods food={food} />
+										<FoodTitle>
+											<p>{food.name}</p>
+											<MdOutlineKeyboardArrowRight />
+										</FoodTitle>
+									</Link>
 									<FoodDetails>{food.description}</FoodDetails>
 									<FoodPrice>R$ {food.price.toLocaleString("pr-br")}</FoodPrice>
 									{!CheckRoleUser(user) && <MakeOrderItem foodId={food.id} foodPrice={food.price} />}
