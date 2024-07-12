@@ -9,7 +9,10 @@ export const Container = styled.div`
 
 	border: 0;
 	background-color: transparent;
-	color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
 	cursor: pointer;
+
+	svg {
+		color: ${({ theme }) => theme.COLORS.LIGHT_100};
+	}
 `;

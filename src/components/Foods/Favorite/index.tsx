@@ -4,6 +4,7 @@ import { api } from "../../../services/api";
 import { Fragment } from "react/jsx-runtime";
 import { useAuth } from "../../../hooks/auth";
 import { CheckRoleUser } from "../../../utils/roles";
+import { Link } from "react-router-dom";
 
 export default function FavoriteFoods({ food }) {
 	const { user } = useAuth();
@@ -48,7 +49,9 @@ export default function FavoriteFoods({ food }) {
 				</Container>
 			) : (
 				<Container>
-					<PiPencilSimple />
+					<Link to={`/update-food/${food.id}`}>
+						<PiPencilSimple />
+					</Link>
 				</Container>
 			)}
 		</Fragment>
