@@ -4,6 +4,7 @@ import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 export const Container = styled.button`
 	display: flex;
 	align-items: center;
+	justify-content: start;
 	font-size: 1.3rem;
 	font-weight: 400;
 
@@ -16,13 +17,13 @@ export const Container = styled.button`
 		font-size: 2.5rem;
 	}
 
-	padding: 1.5rem 7.5rem 0;
+	padding: 1.5rem 6.6rem 0;
 
 	@media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
-		padding: 0 3.5rem;
+		padding: 1.5rem 3.5rem;
 	}
 
 	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-		padding: 2rem 2rem 0;
+		padding: 2rem 1.5rem 0;
 	}
 `;
