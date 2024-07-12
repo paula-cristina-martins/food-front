@@ -26,7 +26,7 @@ export const Main = styled.main`
 	}
 `;
 
-export const Description = styled.div`
+export const Details = styled.div`
 	font-weight: 500;
 	font-size: 2.5rem;
 	padding-bottom: 1.2rem;
@@ -43,7 +43,7 @@ export const Description = styled.div`
 	}
 `;
 
-export const Tags = styled.div`
+export const Ingredients = styled.div`
 	padding-top: 1.5rem;
 
 	span {
@@ -85,5 +85,9 @@ export const Order = styled.div`
 	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
 		justify-content: center;
 		padding: 1rem 0;
+
+		button {
+			margin: 0 1rem;
+		}
 	}
 `;

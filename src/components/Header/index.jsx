@@ -24,6 +24,7 @@ import { CheckRoleUser, USER_ROLE } from "../../utils/roles";
 import { ConsultFoods } from "../Foods/Consult";
 import { useConsultFood } from "../../hooks/consultFood";
 import { useOrders } from "../../hooks/orders";
+import { Link } from "react-router-dom";
 
 export function Header() {
 	const { user, signOut } = useAuth();
@@ -55,7 +56,9 @@ export function Header() {
 
 					<Options>
 						{CheckRoleUser(user) ? (
-							<Button name={"Novo prato"} />
+							<Link to="/create-food">
+								<Button name={"Novo prato"} />
+							</Link>
 						) : (
 							<Button icon={PiReceipt} name={`Pedidos (${orderQuantity ?? 0})`} />
 						)}
@@ -69,10 +72,11 @@ export function Header() {
 							<Badge>{orderQuantity ?? 0}</Badge>
 						</Orders>
 					)}
-
-					<SignOutButton type="button" onClick={signOut}>
-						<FiLogOut size={24} />
-					</SignOutButton>
+					<Link to="/">
+						<SignOutButton type="button" onClick={signOut}>
+							<FiLogOut size={24} />
+						</SignOutButton>
+					</Link>
 				</Container>
 			) : (
 				<Fragment>
@@ -85,8 +89,14 @@ export function Header() {
 					<OptionsMobile>
 						<ConsultFoods description={search} setDescription={setSearch} />
 						<OptionButton>
-							{CheckRoleUser(user) && <button>Novo prato</button>}
-							<button onClick={() => signOut()}>Sair</button>
+							{CheckRoleUser(user) && (
+								<Link to="/create-food">
+									<button>Novo prato</button>
+								</Link>
+							)}
+							<Link to="/">
+								<button onClick={() => signOut()}>Sair</button>
+							</Link>
 						</OptionButton>
 					</OptionsMobile>
 				</Fragment>

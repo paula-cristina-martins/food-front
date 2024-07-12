@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { Container, Main, Order, Tags, Description } from "./styles";
-import { useParams } from "react-router-dom";
+import { Container, Details, Main, Order, Ingredients } from "./styles";
+import { Link, useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import MakeOrderItem from "../../components/Foods/Order/MakeOrderItem";
 import ImageFoods from "../../components/Foods/Image";
@@ -45,18 +45,20 @@ export function ShowFood() {
 					<ImageFoods food={foodDetails} />
 				</div>
 				<div>
-					<Description>
+					<Details>
 						{foodDetails.name}
 						<p>{foodDetails.description}</p>
-					</Description>
-					<Tags>
+					</Details>
+					<Ingredients>
 						{foodDetails.ingredients?.map((ingredient, index) => {
 							return <span key={index}>{ingredient}</span>;
 						})}
-					</Tags>
+					</Ingredients>
 					<Order>
 						{CheckRoleUser(user) ? (
-							<Button name={"Editar prato"} icon={""} onClick={() => {}} />
+							<Link to={`/update-food/${foodDetails.id}`}>
+								<Button name={"Editar prato"} icon={""} onClick={() => {}} />
+							</Link>
 						) : (
 							<MakeOrderItem foodId={foodDetails.id} foodPrice={foodDetails.price} showPrice />
 						)}

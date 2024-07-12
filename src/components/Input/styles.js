@@ -20,7 +20,7 @@ export const Container = styled.div`
 		background: ${({ theme }) => theme.COLORS.DARK_200};
 		color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
-		border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100};
+		border: 0;
 		border-radius: 0.4rem;
 
 		&::placeholder {
