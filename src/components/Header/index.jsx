@@ -55,6 +55,9 @@ export function Header() {
 					</Search>
 
 					<Options>
+						<Link to={CheckRoleUser(user) ? "/favorite-food-admin" : "/favorite-food"} className="options">
+							{CheckRoleUser(user) ? "Favoritos" : "Meus favoritos"}
+						</Link>
 						{CheckRoleUser(user) ? (
 							<Link to="/create-food">
 								<Button name={"Novo prato"} />
@@ -89,6 +92,9 @@ export function Header() {
 					<OptionsMobile>
 						<ConsultFoods description={search} setDescription={setSearch} />
 						<OptionButton>
+							<Link to={CheckRoleUser(user) ? "/favorite-food-admin" : "/favorite-food"}>
+								<button>{CheckRoleUser(user) ? "Favoritos" : "Meus favoritos"}</button>
+							</Link>
 							{CheckRoleUser(user) && (
 								<Link to="/create-food">
 									<button>Novo prato</button>

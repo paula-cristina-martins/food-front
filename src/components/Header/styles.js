@@ -17,6 +17,7 @@ export const Container = styled.nav`
 	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
 		padding: 3.5rem 2rem 1.5rem;
 		justify-content: start;
+		gap: 0;
 	}
 `;
 
@@ -51,6 +52,16 @@ export const Search = styled.div`
 `;
 
 export const Options = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+
+	.options {
+		border: 0;
+		background-color: transparent;
+		color: ${({ theme }) => theme.COLORS.LIGHT_100};
+	}
+
 	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
 		display: none;
 	}
