@@ -7,22 +7,14 @@ export const Container = styled.div`
 	justify-content: center;
 
 	img {
-		width: 12rem;
-		height: 12rem;
 		border-radius: 100%;
 	}
 
 	svg {
-		font-size: 12rem;
 		color: ${({ theme }) => theme.COLORS.LIGHT_100};
 	}
 
 	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-		img {
-			width: 10rem;
-			height: 10rem;
-		}
-
 		svg {
 			font-size: 10rem;
 		}

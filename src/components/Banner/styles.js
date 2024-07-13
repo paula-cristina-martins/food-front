@@ -63,6 +63,7 @@ export const Container = styled.div`
 			padding: 0 0.5rem 0 0;
 
 			h1 {
+				display: none;
 				font-size: 1.5rem;
 			}
 

@@ -3,7 +3,7 @@ import { Container } from "./styles";
 import { api } from "../../../services/api";
 import { useEffect, useState } from "react";
 
-export default function ImageFoods({ food }) {
+export default function ImageFoods({ food, size }) {
 	const [foodPhoto, setFoodPhoto] = useState(null);
 
 	async function showFoodPhoto(photo) {
@@ -26,5 +26,13 @@ export default function ImageFoods({ food }) {
 		}
 	}, [food]);
 
-	return <Container>{foodPhoto ? <img src={foodPhoto} alt={food.name} /> : <PiBowlFoodBold />}</Container>;
+	return (
+		<Container>
+			{foodPhoto ? (
+				<img src={foodPhoto} width={size ?? 264} height={size ?? 264} alt={food.name} />
+			) : (
+				<PiBowlFoodBold size={size ?? 264} />
+			)}
+		</Container>
+	);
 }

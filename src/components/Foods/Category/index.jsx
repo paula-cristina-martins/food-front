@@ -70,7 +70,7 @@ export function CategoryFoods({ title, category }) {
 								<CarouselItem key={food.id}>
 									<FavoriteFoods food={food} />
 									<Link to={`/show-food/${food.id}`}>
-										<ImageFoods food={food} />
+										<ImageFoods food={food} size={140} />
 										<FoodTitle>
 											<p>{food.name}</p>
 											<MdOutlineKeyboardArrowRight />

@@ -45,6 +45,8 @@ export const Details = styled.div`
 
 export const Ingredients = styled.div`
 	padding-top: 1.5rem;
+	display: flex;
+	align-items: center;
 
 	span {
 		background-color: ${({ theme }) => theme.COLORS.DARK_100};
@@ -85,9 +87,5 @@ export const Order = styled.div`
 	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
 		justify-content: center;
 		padding: 1rem 0;
-
-		button {
-			margin: 0 1rem;
-		}
 	}
 `;
