@@ -7,7 +7,7 @@ import ImageFoods from "../../components/Foods/Image";
 
 export function FavoriteFoodAdmin() {
 	const [foodDetails, setFoodDetails] = useState([]);
-	console.log(foodDetails);
+
 	async function searchFoodFavorites() {
 		try {
 			const response = await api.get(`foods/favorites/search/count`, {

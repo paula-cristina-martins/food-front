@@ -5,6 +5,7 @@ export const Container = styled.div`
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	color: ${({ theme }) => theme.COLORS.LIGHT_100};
 `;
 
 export const Title = styled.h1`

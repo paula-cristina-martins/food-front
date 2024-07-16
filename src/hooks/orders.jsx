@@ -54,6 +54,7 @@ function OrdersProvider({ children }) {
 	return (
 		<OrdersContext.Provider
 			value={{
+				orderCheck,
 				orderQuantity,
 				createOrder,
 				searchOrdersAwaitingPayment,

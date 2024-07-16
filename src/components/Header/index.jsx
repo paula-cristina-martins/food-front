@@ -46,7 +46,9 @@ export function Header() {
 					</MenuMobile>
 
 					<User>
-						<BrandImage />
+						<Link to="/">
+							<BrandImage />
+						</Link>
 						{CheckRoleUser(user) && <span>{user?.role}</span>}
 					</User>
 
@@ -63,16 +65,20 @@ export function Header() {
 								<Button name={"Novo prato"} />
 							</Link>
 						) : (
-							<Button icon={PiReceipt} name={`Pedidos (${orderQuantity ?? 0})`} />
+							<Link to="/order">
+								<Button icon={PiReceipt} name={`Pedidos (${orderQuantity ?? 0})`} />
+							</Link>
 						)}
 					</Options>
 
 					{!CheckRoleUser(user) && (
 						<Orders>
-							<div>
-								<PiReceipt size={24} />
-							</div>
-							<Badge>{orderQuantity ?? 0}</Badge>
+							<Link to="/order">
+								<div>
+									<PiReceipt size={24} />
+								</div>
+								<Badge>{orderQuantity ?? 0}</Badge>
+							</Link>
 						</Orders>
 					)}
 					<Link to="/">

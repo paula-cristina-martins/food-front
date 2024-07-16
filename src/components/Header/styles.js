@@ -54,6 +54,8 @@ export const Search = styled.div`
 export const Options = styled.div`
 	display: flex;
 	align-items: center;
+	text-align: center;
+
 	gap: 2rem;
 
 	.options {
@@ -132,6 +134,7 @@ export const Orders = styled.div`
 	div {
 		display: flex;
 		align-items: center;
+		color: ${({ theme }) => theme.COLORS.LIGHT_100};
 	}
 
 	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
