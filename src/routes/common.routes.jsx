@@ -3,6 +3,7 @@ import { NotFound } from "../pages/NotFound";
 import { Home } from "../pages/Home";
 import { ShowFood } from "../pages/Food";
 import { FavoriteFood } from "../pages/Favorites";
+import { Order } from "../pages/Order";
 
 export function CommonRoutes() {
 	return (
@@ -10,6 +11,7 @@ export function CommonRoutes() {
 			<Route path="/" element={<Home />} />
 			<Route path="/show-food/:id" element={<ShowFood />} />
 			<Route path="/favorite-food" element={<FavoriteFood />} />
+			<Route path="/order" element={<Order />} />
 			<Route path="*" exact={true} element={<NotFound />} />
 		</Routes>
 	);
