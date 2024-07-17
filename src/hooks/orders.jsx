@@ -4,6 +4,7 @@ const OrdersContext = createContext({});
 
 import { api } from "../services/api";
 import { useAuth } from "./auth";
+import { ORDER_TYPES } from "../utils/orderTypes";
 
 function OrdersProvider({ children }) {
 	const { user } = useAuth();
@@ -31,7 +32,7 @@ function OrdersProvider({ children }) {
 
 		try {
 			if (orderCheck == null) {
-				const response = await api.post("orders", { status: "awaiting_payment" }, { withCredentials: true });
+				const response = await api.post("orders", { status: ORDER_TYPES.AWAITING_PAYMENT }, { withCredentials: true });
 				orderId = response.data.id;
 			}
 
