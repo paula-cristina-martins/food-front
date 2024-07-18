@@ -70,28 +70,6 @@ export const CarouselItem = styled.div`
 	}
 `;
 
-export const GradientOverlay = styled.div`
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 30rem;
-	pointer-events: none;
-	background: ${({ left }) =>
-		left
-			? "linear-gradient(to right, #000A0F, rgba(0, 0, 0, 0))"
-			: "linear-gradient(to left, #000A0F, rgba(0, 0, 0, 0))"};
-	${({ left }) => (left ? "left: 0;" : "right: 0;")}
-	transition: opacity 0.9s ease-in-out;
-
-	@media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
-		width: 10rem;
-	}
-
-	@media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-		display: none;
-	}
-`;
-
 export const FoodTitle = styled.div`
 	display: flex;
 	justify-content: center;

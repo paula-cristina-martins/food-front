@@ -4,7 +4,6 @@ import {
 	CarouselItem,
 	Container,
 	CarouselDetails,
-	GradientOverlay,
 	FoodTitle,
 	FoodDetails,
 	FoodPrice,
@@ -86,8 +85,6 @@ export function CategoryFoods({ title, category }) {
 					<DirectionCarousel onClick={scrollRight}>
 						<MdOutlineKeyboardArrowRight />
 					</DirectionCarousel>
-					{!isAtStart && <GradientOverlay $left={"true"} />}
-					{!isAtEnd && <GradientOverlay $right={"true"} />}
 				</CategoryFood>
 			)}
 		</Container>
