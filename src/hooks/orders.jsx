@@ -27,6 +27,21 @@ function OrdersProvider({ children }) {
 		}
 	}
 
+	async function searchOrdersStatus() {
+		try {
+			const response = await api.get("orders/status", {
+				withCredentials: true,
+			});
+			setOrderQuantity(response.data.length);
+		} catch (error) {
+			if (error.response) {
+				alert(error.response.data.message);
+			} else {
+				alert("Não foi possível localizar pedidos em status de pendente e preparando!");
+			}
+		}
+	}
+
 	async function createOrder(quantity, price, foodId) {
 		let orderId = 0;
 
@@ -58,6 +73,7 @@ function OrdersProvider({ children }) {
 				orderCheck,
 				orderQuantity,
 				createOrder,
+				searchOrdersStatus,
 				searchOrdersAwaitingPayment,
 			}}
 		>
