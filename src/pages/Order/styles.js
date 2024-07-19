@@ -12,7 +12,7 @@ export const Main = styled.main`
 
 	padding: 1.7rem 7.5rem;
 	gap: 4.7rem;
-	margin-bottom: 25rem;
+	margin-bottom: 35rem;
 
 	@media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
 		padding: 1.7rem 3.5rem;
