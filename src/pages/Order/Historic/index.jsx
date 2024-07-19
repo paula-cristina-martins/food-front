@@ -21,7 +21,7 @@ export function HistoricOrder() {
 			if (error.response) {
 				alert(error.response.data.message);
 			} else {
-				alert("Não há pratos favoritos!");
+				alert("Não há pedidos realizados!");
 			}
 		}
 	}
