@@ -13,7 +13,7 @@ export function CommonRoutes() {
 			<Route path="/show-food/:id" element={<ShowFood />} />
 			<Route path="/favorite-food" element={<FavoriteFood />} />
 			<Route path="/order" element={<Order />} />
-			<Route path="/order/historic" element={<HistoricOrder />} />
+			<Route path="/order-historic" element={<HistoricOrder />} />
 			<Route path="*" exact={true} element={<NotFound />} />
 		</Routes>
 	);

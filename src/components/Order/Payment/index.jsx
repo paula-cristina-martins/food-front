@@ -44,7 +44,7 @@ export function OrderPayment({ checkMobile, value }) {
 		try {
 			const response = await api.put(`orders/${orderCheck.id}`, payload, { withCredentials: true });
 			alert(response.data.message);
-			navigate("/order/historic");
+			navigate("/order-historic");
 		} catch (error) {
 			if (error.response) {
 				alert(error.response.data.message);

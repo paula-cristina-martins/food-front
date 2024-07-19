@@ -28,13 +28,14 @@ import { Link } from "react-router-dom";
 
 export function Header() {
 	const { user, signOut } = useAuth();
-	const { orderQuantity, searchOrdersAwaitingPayment } = useOrders();
+	const { orderQuantity, searchOrdersAwaitingPayment, searchOrdersStatus } = useOrders();
 	const { search, setSearch } = useConsultFood();
 
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
 
 	useEffect(() => {
-		searchOrdersAwaitingPayment();
+		if (user.role == USER_ROLE.ADMIN) searchOrdersStatus();
+		else searchOrdersAwaitingPayment();
 	}, []);
 
 	return (
@@ -60,27 +61,31 @@ export function Header() {
 						<Link to={CheckRoleUser(user) ? "/favorite-food-admin" : "/favorite-food"} className="options">
 							{CheckRoleUser(user) ? "Favoritos" : "Meus favoritos"}
 						</Link>
-						{CheckRoleUser(user) ? (
-							<Link to="/create-food">
-								<Button name={"Novo prato"} />
+
+						{!CheckRoleUser(user) ? (
+							<Link to={"/order-historic"} className="options">
+								Histórico de pedidos
 							</Link>
 						) : (
-							<Link to="/order">
-								<Button icon={PiReceipt} name={`Pedidos (${orderQuantity ?? 0})`} />
+							<Link to={"/create-food"} className="options">
+								Novo prato
 							</Link>
 						)}
+
+						<Link to={`${CheckRoleUser(user) ? "/order-status-update" : "/order"}`}>
+							<Button icon={PiReceipt} name={`Pedidos (${orderQuantity ?? 0})`} />
+						</Link>
 					</Options>
 
-					{!CheckRoleUser(user) && (
-						<Orders>
-							<Link to="/order">
-								<div>
-									<PiReceipt size={24} />
-								</div>
-								<Badge>{orderQuantity ?? 0}</Badge>
-							</Link>
-						</Orders>
-					)}
+					<Orders>
+						<Link to={`${CheckRoleUser(user) ? "/order-status-update" : "/order"}`}>
+							<div>
+								<PiReceipt size={24} />
+							</div>
+							<Badge>{orderQuantity ?? 0}</Badge>
+						</Link>
+					</Orders>
+
 					<Link to="/">
 						<SignOutButton type="button" onClick={signOut}>
 							<FiLogOut size={24} />
@@ -101,6 +106,11 @@ export function Header() {
 							<Link to={CheckRoleUser(user) ? "/favorite-food-admin" : "/favorite-food"}>
 								<button>{CheckRoleUser(user) ? "Favoritos" : "Meus favoritos"}</button>
 							</Link>
+							{!CheckRoleUser(user) && (
+								<Link to="/order-historic">
+									<button>Histórico de pedidos</button>
+								</Link>
+							)}
 							{CheckRoleUser(user) && (
 								<Link to="/create-food">
 									<button>Novo prato</button>
