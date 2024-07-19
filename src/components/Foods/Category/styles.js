@@ -74,6 +74,7 @@ export const FoodTitle = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 	gap: 0.4rem;
 	padding-top: 1.5rem;
 
@@ -93,6 +94,7 @@ export const FoodDetails = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 	font-size: 0.9rem;
 	font-weight: 300;
 	font-family: "Roboto";
